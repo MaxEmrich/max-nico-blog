@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tales From 616</title>
+    <link href="/styles/home-styles.css" rel="stylesheet" type="text/css" />
+    <!-- Always use ../ to access the upper level directory -->
+  </head>
+  <body>
+    <div id="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/stories-routes">Stories</a></li>
+        <li><a href="/stories-routes/display-stories">display-stories</a></li>
+        <!-- <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li> -->
+      </ul>
+      <div class="home-title-container">
+        <h1 class="home-title"><a href="/">Tales From 616</a></h1>
+      </div>
+    </div>
+
+    <main>
+      <div class="home-form">
+        <form action="/submit-form" method="POST">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" required />
+          <label for="name">Optional message</label>
+          <input type="text" id="message" name="message" />
+          <br />
+          <div id="home-form-button"><button type="submit">Submit</button></div>
+        </form>
+      </div>
+
+      <div id="home-main-text">
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+          quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+          aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+          exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+          ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+          ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+          qui dolorem eum fugiat quo voluptas nulla pariatur
+        </p>
+      </div>
+
+      <!-- <div id="home-image">
+        <img id="home-main-img" src="../images/616 logo.jpg" />
+      </div> -->
+    </main>
+  </body>
+</html>
