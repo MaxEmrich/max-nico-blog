@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const db = require("./models/models");
 const passport = require("passport");
 const flash = require("express-flash");
@@ -18,11 +18,11 @@ const adminRoute = require("./routes/admin");
 app.use("/stories-routes", storiesRoute);
 app.use("/admin", adminRoute);
 
-initializePassport(passport, (email) => {
-  passport,
-    (email) => users.find((user) => user.email === email),
-    (id) => users.find((user) => user.id === id);
-});
+// initializePassport(passport, (email) => {
+//   passport,
+//     (email) => users.find((user) => user.email === email),
+//     (id) => users.find((user) => user.id === id);
+// });
 
 const publicPath = path.join(__dirname, "public");
 
@@ -45,8 +45,8 @@ app.use(
     saveUninitialized: false,
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -81,27 +81,27 @@ app.post("/submit-form", (req, res) => {
   res.redirect("/");
 });
 
-function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
-
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/");
-  }
-  next();
-}
-
-// Other routes and middleware...
-
 const port_num = 3000;
 
 app.listen(port_num, () => {
   console.log(`Server is running on port ${port_num}`);
 });
+
+// function checkAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   }
+//   res.redirect("/login");
+// }
+
+// function checkNotAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return res.redirect("/");
+//   }
+//   next();
+// }
+
+// Other routes and middleware...
 
 // app.get("/login", checkNotAuthenticated, (req, res) => {
 //   res.render("login");

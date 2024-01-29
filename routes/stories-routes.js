@@ -9,10 +9,6 @@ router.get("/", (req, res) => {
   res.render("stories");
 });
 
-router.get("/display-stories/:id", (req, res) => {
-  const fileId = req.params.id;
-  const query = "SELECT story_data FROM stories_table WHERE id = ?";
-  db.query(query, [fileId], (err, results) => {});
-});
+router.get("/display-stories/:id", (req, res) => {});
 
 module.exports = router;
