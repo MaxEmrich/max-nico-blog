@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-// const bcrypt = require("bcrypt");
 const db = require("./models/models");
 const passport = require("passport");
 const flash = require("express-flash");
