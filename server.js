@@ -58,27 +58,27 @@ app.get("/", (req, res) => {
 // Use body-parser middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/submit-form", (req, res) => {
-  const name = req.body.name;
-  console.log(`Got name: ${name}`);
-  const email = req.body.email;
-  console.log(`Got email: ${email}`);
-  const message = req.body.message;
-  console.log(`Got message: ${message}`);
+// app.post("/submit-form", (req, res) => {
+//   const name = req.body.name;
+//   console.log(`Got name: ${name}`);
+//   const email = req.body.email;
+//   console.log(`Got email: ${email}`);
+//   const message = req.body.message;
+//   console.log(`Got message: ${message}`);
 
-  db.query(
-    "INSERT INTO users_list (name, email, message) VALUES (?, ?, ?)",
-    [name, email, message],
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      console.log(result);
-    }
-  );
+//   db.query(
+//     "INSERT INTO users_list (name, email, message) VALUES (?, ?, ?)",
+//     [name, email, message],
+//     (err, result) => {
+//       if (err) {
+//         console.log(err);
+//       }
+//       console.log(result);
+//     }
+//   );
 
-  res.redirect("/");
-});
+//   res.redirect("/");
+// });
 
 const port_num = 3000;
 

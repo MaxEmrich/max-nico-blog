@@ -9,7 +9,7 @@ html {
   justify-items: center;
   justify-content: center;
   /* width: calc(100vw - 16px);
-  height: calc(100vh - 16px); */
+    height: calc(100vh - 16px); */
 }
 
 body {
@@ -88,49 +88,4 @@ li a:hover {
   font-size: 1.5rem;
   color: white;
   font-weight: normal;
-}
-
-/* ----------------------------------------------------------------------------------------------------------- */
-
-main {
-  margin: 0;
-  display: flex;
-  /* height: 100vh; */
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-#home-image {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.2rem;
-  margin-bottom: 1rem;
-
-  border: 3px solid #000000;
-  border-radius: 4px;
-  filter: drop-shadow(8px 8px);
-}
-
-#home-main-img {
-  width: 20rem;
-  height: 20rem;
-}
-
-#home-main-text {
-  text-decoration: underline;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-  justify-content: center;
-}
-
-.paragraph-text {
-  justify-content: center;
-  font-weight: bold;
-  margin-top: 0rem;
-  margin-bottom: 3rem;
-}
-
-.spacer {
-  height: 50vh; /* Set the height of the spacer to fill the remaining viewport height */
 }

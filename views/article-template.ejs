@@ -3,11 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Blog - Articles</title>
+    <link href="/styles/base.css" rel="stylesheet" type="text/css" />
+    <title>Tales From 616 - Articles</title>
   </head>
   <body>
-    <h1>Articles</h1>
+    <div id="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/stories-routes">Stories</a></li>
+        <!-- <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li> -->
+      </ul>
+      <div class="home-title-container">
+        <h1 class="home-title"><a href="/">Tales From 616</a></h1>
+      </div>
+    </div>
 
-    <%= fileData %>
+    <h1>Articles</h1>
+    <p><%= name %></p>
   </body>
 </html>

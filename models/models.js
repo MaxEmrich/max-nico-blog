@@ -2,10 +2,10 @@ const mysql = require("mysql2");
 
 // Create a connection pool
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "app_user",
-  password: "Maxmadeit1",
-  database: "node_app_database",
+  host: "sql3.freesqldatabase.com",
+  user: "sql3682952",
+  password: "E8iWZDJMvX",
+  database: "sql3682952",
 });
 
 db.connect((err) => {

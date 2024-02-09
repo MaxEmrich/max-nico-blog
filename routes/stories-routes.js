@@ -9,6 +9,18 @@ router.get("/", (req, res) => {
   res.render("stories");
 });
 
-router.get("/display-stories/:id", (req, res) => {});
+router.get("/select-story", (req, res) => {});
+
+router.get("/display-stories", (req, res) => {
+  db.query("SELECT story_name FROM stories", (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(result);
+    const name = result[0].story_name;
+    console.log(name);
+    res.render("article-template", { name: name });
+  });
+});
 
 module.exports = router;
