@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tales From 616</title>
+    <link href="/styles/register-page.css" rel="stylesheet" type="text/css" />
+    <link href="/styles/home-styles.css" rel="stylesheet" type="text/css" />
+    <!-- Always use ../ to access the upper level directory -->
+  </head>
+  <body>
+    <div id="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+      </ul>
+      <div class="home-title-container">
+        <h1 class="home-title">Tales From 616</h1>
+      </div>
+    </div>
+    <h1>Registration Page</h1>
+    <div id="registration-form-div">
+      <form id="registration-form" action="/register" method="post">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="text" id="password" name="password" required />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </body>
+</html>

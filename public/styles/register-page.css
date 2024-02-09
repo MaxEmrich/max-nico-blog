@@ -1,0 +1,21 @@
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#registration-form-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#registration-form-div #registration-form > * {
+  align-items: start;
+  margin-top: 3rem;
+}
+
+#registration-form button {
+  color: green;
+  width: 8rem;
+  margin-top: 1rem;
+}
