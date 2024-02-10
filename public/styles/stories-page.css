@@ -1,26 +1,40 @@
-#stories {
+* {
+  color: black;
+}
+
+#article-header {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-#stories ol {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
+#stories li a:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
 }
 
-#stories ol li {
+#stories {
+  display: flex;
+  justify-content: center;
+}
+
+#stories-list {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  justify-content: center;
+}
+
+#stories-list ul {
+  flex-direction: column;
+}
+
+#stories-list li {
   margin-top: 3rem;
 }
 
-iframe {
-  display: flex;
-  width: 680px; /* adding width of text field */
-  margin: 0 auto; /* centering it */
-  text-align: left; /* aligning text to left side */
-
-  font-size: 15px; /* size of your font */
-  line-height: 24px; /* space between two lines */
-  letter-spacing: -0.01em; /* space between two letters */
+#stories-list li a {
+  letter-spacing: 2px;
 }

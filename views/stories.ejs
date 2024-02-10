@@ -17,12 +17,18 @@
         <h1 class="home-title"><a href="/">Tales From 616</a></h1>
       </div>
     </div>
+
+    <!----------------------------------------------------------------------------->
+
+    <h1 id="article-header">STORIES</h1>
     <div id="stories">
-      <ul>
-        <li><a href="/stories-routes/display-stories"></a>Story Link</li>
-        <li><a></a></li>
-        <li><a></a></li>
-        <li><a></a></li>
+      <ul id="stories-list">
+        <% for(let i = 0; i < result.length; i++) { %> <% let currentStory =
+        result[i].story_name; %>
+        <li>
+          <a href="/stories-routes/display-stories"><%= currentStory %></a>
+        </li>
+        <% } %>
       </ul>
     </div>
   </body>
