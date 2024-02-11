@@ -9,6 +9,7 @@
     <!-- Always use ../ to access the upper level directory -->
   </head>
   <body>
+    <script type="text/javascript" src="/dom.js"></script>
     <div id="navbar">
       <ul>
         <li><a href="/">Home</a></li>
@@ -19,14 +20,13 @@
     </div>
 
     <!----------------------------------------------------------------------------->
-
-    <h1 id="article-header">STORIES</h1>
+    <h1 id="article-header-h1">STORIES</h1>
     <div id="stories">
       <ul id="stories-list">
         <% for(let i = 0; i < result.length; i++) { %> <% let currentStory =
         result[i].story_name; %>
         <li>
-          <a href="/stories-routes/display-stories"><%= currentStory %></a>
+          <a class="selectStoryButton"><%= currentStory %> </a>
         </li>
         <% } %>
       </ul>

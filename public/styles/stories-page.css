@@ -2,14 +2,18 @@
   color: black;
 }
 
-#article-header {
+#article-header-h1 {
   display: flex;
   justify-content: center;
+  text-decoration: underline;
+  text-align: center;
 }
 
 #stories li a:hover {
   background-color: rgb(0, 0, 0);
+  font-size: larger;
   color: white;
+  transition: 0.5s ease;
 }
 
 #stories {
@@ -37,4 +41,5 @@
 
 #stories-list li a {
   letter-spacing: 2px;
+  cursor: pointer;
 }
