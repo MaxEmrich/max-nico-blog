@@ -1,17 +1,19 @@
+// Imports --------------------------------------------
+
 const express = require("express");
 const router = express.Router();
 const db = require("../models/models");
 const fs = require("fs");
 const path = require("path");
-const { file } = require("googleapis/build/src/apis/file");
 const { render } = require("ejs");
+
+// ----------------------------------------------------
 
 router.get("/", (req, res) => {
   db.query("SELECT story_name FROM stories", (err, result) => {
     if (err) {
       console.log(err);
     }
-    ``;
     res.render("stories", { result: result });
   });
 });

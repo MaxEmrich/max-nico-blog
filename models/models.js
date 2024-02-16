@@ -8,6 +8,7 @@ const db = mysql.createConnection({
   database: "sql3682952",
 });
 
+// Connect to the database
 db.connect((err) => {
   if (err) {
     console.error("Database connection failed: " + err.stack);
