@@ -10,11 +10,11 @@ const multer = require("multer");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const render = require("ejs");
-//const initializePassport = require("./passport-config");
 const methodOverride = require("method-override");
 const storiesRoute = require("./routes/stories-routes");
 const adminRoute = require("./routes/admin-routes");
 const authRoute = require("./routes/auth-routes");
+const bcrypt = require("bcrypt");
 
 // ---------------------------------------------------------
 
@@ -36,15 +36,6 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false }));
-app.use(flash());
-app.use(
-  session({
-    secret: "secret-key",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -65,8 +56,4 @@ app.listen(3000, function (err) {
 
 app.get("/", (req, res) => {
   res.render("index");
-});
-
-app.get("/admin-register", (req, res) => {
-  res.render("register");
 });

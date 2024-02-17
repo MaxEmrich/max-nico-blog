@@ -21,14 +21,14 @@ main {
   filter: drop-shadow(8px 8px);
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
   }
-}
+} */
 
 #home-main-img {
   width: 20rem;
@@ -52,4 +52,23 @@ main {
 
 .spacer {
   height: 50vh; /* Set the height of the spacer to fill the remaining viewport height */
+}
+
+#homepage-footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #333;
+  flex-direction: column;
+}
+
+#homepage-footer a {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+#homepage-footer p {
+  color: white;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
