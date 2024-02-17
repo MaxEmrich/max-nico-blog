@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models/models");
-const login_info = require("../login-info.json");
 const { render } = require("ejs");
 const { text } = require("body-parser");
+const config = require("./config/env_config");
 
 router.get("/", (req, res) => {
   res.render("login");

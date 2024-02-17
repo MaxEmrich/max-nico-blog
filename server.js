@@ -13,8 +13,8 @@ const render = require("ejs");
 //const initializePassport = require("./passport-config");
 const methodOverride = require("method-override");
 const storiesRoute = require("./routes/stories-routes");
-const adminRoute = require("./routes/admin");
-const authRoute = require("./routes/auth");
+const adminRoute = require("./routes/admin-routes");
+const authRoute = require("./routes/auth-routes");
 
 // ---------------------------------------------------------
 
@@ -65,4 +65,8 @@ app.listen(3000, function (err) {
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/admin-register", (req, res) => {
+  res.render("register");
 });
