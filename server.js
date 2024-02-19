@@ -52,5 +52,5 @@ app.listen(3000, function (err) {
 });
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render(path.join(__dirname, "index.ejs"));
 });
