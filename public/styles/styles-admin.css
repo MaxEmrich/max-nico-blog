@@ -12,7 +12,25 @@
   height: 40vh;
 }
 
+#formdiv form {
+  display: flex;
+  flex-direction: column;
+}
+
+#formdiv * {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+#formdiv #storyNameInput {
+  width: 300px;
+  height: 50px;
+}
+
 #formdiv #submit-story-btn {
   justify-content: center;
   align-items: center;
+  width: 200px;
 }

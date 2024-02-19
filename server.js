@@ -3,9 +3,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const db = require("./models/models");
 const passport = require("passport");
-const flash = require("express-flash");
 const multer = require("multer");
 const bodyParser = require("body-parser");
 const session = require("express-session");
@@ -14,7 +12,6 @@ const methodOverride = require("method-override");
 const storiesRoute = require("./routes/stories-routes");
 const adminRoute = require("./routes/admin-routes");
 const authRoute = require("./routes/auth-routes");
-const bcrypt = require("bcrypt");
 
 // ---------------------------------------------------------
 

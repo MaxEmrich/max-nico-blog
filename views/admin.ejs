@@ -23,9 +23,12 @@
     <!------------------------------------------------------------------------->
 
     <div id="formdiv">
-        <form action="/admin/add-story" method="POST">
+        <form action="/stories-routes/add-story" method="POST">
+          <label for="textArea">Text Content</label>
             <textarea id="textArea" name="textArea">
             </textarea>
+            <label for="storyName">Story Name</label>
+            <input id="storyNameInput" type="text" name="storyName" placeholder="add the name of the story">
             <button id="submit-story-btn" type="submit">Add Story</button>
         </form>
     </div>

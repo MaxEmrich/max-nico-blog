@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const initializePassport = require("../passport-config.js");
 const passport = require("passport");
 const session = require("express-session");
-// --------------------------------------------------------------
+// ----------------------------------------------------------------
 
 // Pre-config -----------------------------------------------------
 const AVAILABLE_EMAIL = config.ACCEPTED_ADMIN_REGISTRATION_EMAIL_1;
@@ -42,35 +42,35 @@ initializePassport(
       console.log(err);
       return null;
     }
-  }, // --------------------------------------------------------------------------->
-  async (id) => {
-    let user_data = null;
-    try {
-      user_data = new Promise((resolve, reject) => {
-        db.query(
-          "SELECT id, admin_email, admin_password FROM admin_users",
-          (err, result, fields) => {
-            if (err) {
-              console.log(err);
-              reject(err);
-            } else {
-              resolve(result);
-            }
-          }
-        );
-      });
+  } // --------------------------------------------------------------------------->
+  //   async (id) => {
+  //     let user_data = null;
+  //     try {
+  //       user_data = new Promise((resolve, reject) => {
+  //         db.query(
+  //           "SELECT id, admin_email, admin_password FROM admin_users",
+  //           (err, result, fields) => {
+  //             if (err) {
+  //               console.log(err);
+  //               reject(err);
+  //             } else {
+  //               resolve(result);
+  //             }
+  //           }
+  //         );
+  //       });
 
-      for (user of user_data) {
-        if (user.id == id) {
-          return user; // Return the entire user object
-        }
-      }
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
-    return 0;
-  }
+  //       for (user of user_data) {
+  //         if (user.id == id) {
+  //           return user; // Return the entire user object
+  //         }
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //       return null;
+  //     }
+  //     return 0;
+  //   }
 );
 
 router.use(
@@ -95,6 +95,8 @@ router.get("/goto-admin-register", (req, res) => {
 router.get("/goto-admin-login", (req, res) => {
   res.render("login-admin");
 });
+
+// Admin LOGIN & REGISTER routes ----------------------------------------->
 
 router.post(
   "/admin-login",
@@ -131,24 +133,13 @@ router.post("/admin-register", async (req, res) => {
       }
       res.render("login-admin");
     });
-  } catch (e) {
-    console.log(`ERROR! ERROR! ERROR! --> ${e}`);
+  } catch (err) {
+    console.log(`ERROR! ERROR! ERROR! --> ${err}`);
   }
   return 0;
 });
 
-// ---------------------------------------------------------------------->
-
-router.post("/add-story", (req, res) => {
-  const textBody = req.body.textArea;
-  console.log(textBody);
-  const containsNonSpace = /\S/.test(textBody);
-
-  if (!containsNonSpace) {
-    // textBody contains non-space characters
-    res.render("admin.ejs");
-  }
-});
+// --------------------------------------------------------------------------------------------------->
 
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
