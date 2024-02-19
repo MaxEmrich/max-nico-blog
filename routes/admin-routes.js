@@ -12,8 +12,67 @@ const session = require("express-session");
 // --------------------------------------------------------------
 
 // Pre-config -----------------------------------------------------
+const AVAILABLE_EMAIL = config.ACCEPTED_ADMIN_REGISTRATION_EMAIL_1;
 const session_key = config.SESSION_KEY;
-console.log(session_key);
+initializePassport(
+  passport,
+  async (email) => {
+    let user_data = null;
+    try {
+      user_data = await new Promise((resolve, reject) => {
+        db.query(
+          "SELECT id, admin_email, admin_password FROM admin_users",
+          (err, result, fields) => {
+            if (err) {
+              console.log(err);
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+
+      for (user of user_data) {
+        if (user.admin_email == email) {
+          return user; // Return the entire user object
+        }
+      }
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }, // --------------------------------------------------------------------------->
+  async (id) => {
+    let user_data = null;
+    try {
+      user_data = new Promise((resolve, reject) => {
+        db.query(
+          "SELECT id, admin_email, admin_password FROM admin_users",
+          (err, result, fields) => {
+            if (err) {
+              console.log(err);
+              reject(err);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+      });
+
+      for (user of user_data) {
+        if (user.id == id) {
+          return user; // Return the entire user object
+        }
+      }
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+    return 0;
+  }
+);
+
 router.use(
   session({
     secret: session_key,
@@ -23,13 +82,6 @@ router.use(
 );
 router.use(passport.initialize());
 router.use(passport.session());
-initializePassport(
-  passport,
-  (email) => users.find((user) => user.email === email),
-  (id) => users.find((user) => user.id === id)
-);
-
-const AVAILABLE_EMAIL = config.ACCEPTED_ADMIN_REGISTRATION_EMAIL_1;
 // --------------------------------------------------------------------
 
 router.get("/", checkAuthenticated, (req, res) => {
@@ -47,8 +99,8 @@ router.get("/goto-admin-login", (req, res) => {
 router.post(
   "/admin-login",
   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
+    successRedirect: "/admin",
+    failureRedirect: "/admin/goto-admin-login",
     failureFlash: false,
   })
 );
@@ -64,6 +116,7 @@ router.post("/admin-register", async (req, res) => {
     );
     res.redirect("/");
   }
+
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const db_insert_query =
@@ -84,16 +137,15 @@ router.post("/admin-register", async (req, res) => {
   return 0;
 });
 
+// ---------------------------------------------------------------------->
+
 router.post("/add-story", (req, res) => {
   const textBody = req.body.textArea;
   console.log(textBody);
   const containsNonSpace = /\S/.test(textBody);
 
-  if (containsNonSpace) {
+  if (!containsNonSpace) {
     // textBody contains non-space characters
-    res.send("story added");
-  } else {
-    // textBody only contains spaces or is empty
     res.render("admin.ejs");
   }
 });
@@ -102,7 +154,8 @@ function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect("../index.ejs");
+  console.log("attempted to go to admin page without being logged in");
+  res.render("index");
 }
 
 module.exports = router;
