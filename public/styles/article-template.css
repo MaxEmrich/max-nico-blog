@@ -1,12 +1,19 @@
 #articleContainerDiv {
   display: flex;
   justify-content: center;
-  align-self: center;
   align-items: center;
-  height: 50vh;
 }
 
 #articleElement {
+  margin-top: 1rem;
+  width: 60vw;
   justify-content: center;
   align-content: center;
+  letter-spacing: 0.05rem;
+  line-height: 2rem;
+}
+
+#storyTitle {
+  display: flex;
+  justify-content: center;
 }

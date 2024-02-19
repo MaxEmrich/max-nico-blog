@@ -61,7 +61,6 @@ router.get("/select-story", (req, res) => {
 
   storyInfo()
     .then((result) => {
-      console.log("Logging INFO FROM DB CALL", result);
       res.render("article-template", { storyInfo: result });
     })
     .catch((error) => {

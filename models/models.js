@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 // Create a connection pool
 const db = mysql.createConnection({
   host: "sql3.freesqldatabase.com",
-  user: "sql3682952",
+  user: "sql3682952", 
   password: "E8iWZDJMvX",
   database: "sql3682952",
 });
