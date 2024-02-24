@@ -1,11 +1,12 @@
 const mysql = require("mysql2");
+const config = require("../config/env_config");
 
 // Create a connection pool
 const db = mysql.createConnection({
-  host: "sql3.freesqldatabase.com",
-  user: "sql3682952", 
-  password: "E8iWZDJMvX",
-  database: "sql3682952",
+  host: `${config.SQL_SERVER_IP}`,
+  user: `${config.SQL_USERNAME}`,
+  password: `${config.SQL_PASSWORD}`,
+  database: "node_app_database",
 });
 
 // Connect to the database

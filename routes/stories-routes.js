@@ -7,7 +7,6 @@ const fs = require("fs");
 const path = require("path");
 const { render } = require("ejs");
 const { sql } = require("googleapis/build/src/apis/sql");
-const { MongoCryptCreateEncryptedCollectionError } = require("mongodb");
 
 // ----------------------------------------------------
 
