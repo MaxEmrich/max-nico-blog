@@ -12,12 +12,27 @@ const { MongoCryptCreateEncryptedCollectionError } = require("mongodb");
 // ----------------------------------------------------
 
 router.get("/", (req, res) => {
-  db.query("SELECT story_name FROM stories", (err, result) => {
-    if (err) {
+  const storyInfo = async function () {
+    const resultFromQuery = await new Promise((resolve, reject) => {
+      db.query("SELECT story_name FROM stories", (err, result) => {
+        if (err) {
+          reject(err);
+        } else if (result) {
+          resolve(result);
+        }
+      });
+    });
+    return resultFromQuery;
+  };
+
+  storyInfo()
+    .then((result) => {
+      res.render("stories", { result: result });
+    })
+    .catch((err) => {
       console.log(err);
-    }
-    res.render("stories", { result: result });
-  });
+      res.redirect("/");
+    });
 });
 
 // Utility function for making this db query async --------------------------------------------------------->
@@ -44,7 +59,6 @@ router.get("/select-story", (req, res) => {
           console.log(err);
           reject(err);
         } else if (rows) {
-          console.log(rows.length);
           for (let i = 0; i < rows.length; i++) {
             let current_story_name = rows[i].story_name;
 
