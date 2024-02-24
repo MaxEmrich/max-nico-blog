@@ -1,2 +1,4 @@
 /.env
 /login-info.json
+/package-lock.json
+/node_modules
