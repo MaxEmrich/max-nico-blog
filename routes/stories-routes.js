@@ -26,6 +26,9 @@ router.get("/", (req, res) => {
 
   storyInfo()
     .then((result) => {
+      console.log(
+        "db connection successfully made inn stories-routes --> get route '/' <---"
+      );
       res.render("stories", { result: result });
     })
     .catch((err) => {
