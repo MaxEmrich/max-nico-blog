@@ -13,20 +13,20 @@ const config = require("../config/env_config");
 // })();
 
 // Create a connection pool
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: `${config.SQL_SERVER_IP}`,
   user: `${config.SQL_USERNAME}`,
   password: `${config.SQL_PASSWORD}`,
   database: "sql3682952",
+  connectionLimit: 100,
 });
 
 // Connect to the database
-db.connect((err) => {
+db.getConnection((err) => {
   if (err) {
-    console.error("Database connection failed: " + err.stack);
-    return;
+    console.log("ERROR here in the db connection stage");
+    console.log(err);
   }
-  console.log("Connected to database");
 });
 
 // Export the pool

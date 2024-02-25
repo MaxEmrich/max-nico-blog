@@ -12,6 +12,7 @@ const methodOverride = require("method-override");
 const storiesRoute = require("./routes/stories-routes");
 const adminRoute = require("./routes/admin-routes");
 const authRoute = require("./routes/auth-routes");
+const db = require("./models/models");
 
 // ---------------------------------------------------------
 
@@ -32,6 +33,10 @@ app.use(
   })
 );
 
+app.use(async (req, res, next) => {
+  req.db = db;
+  next();
+});
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
