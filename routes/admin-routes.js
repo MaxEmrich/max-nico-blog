@@ -55,8 +55,8 @@ router.use(passport.session());
 // ----------------------------------------------------------------------------------
 
 router.get("/", checkAuthenticated, (req, res) => {
-  const resultFromQuery = async () => {
-    let return_value = await new Promise((resolve, reject) => {
+  function makeDbQuery() {
+    return new Promise((resolve, reject) => {
       db.query("SELECT story_name, id FROM stories", (err, result) => {
         if (err) {
           console.log(err);
@@ -66,17 +66,14 @@ router.get("/", checkAuthenticated, (req, res) => {
         }
       });
     });
-    return return_value;
-  };
+  }
 
-  resultFromQuery()
-    .then((result) => {
-      res.render("admin", { storyInfo: result });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.render("index");
-    });
+  async function renderResults() {
+    const resultsFromQuery = await makeDbQuery();
+    res.render("admin", { storyInfo: resultsFromQuery });
+  }
+
+  renderResults();
 });
 
 router.get("/goto-admin-register", (req, res) => {
@@ -89,7 +86,6 @@ router.get("/goto-admin-login", (req, res) => {
 
 router.post("/remove-article", checkAuthenticated, (req, res) => {
   const storyId = req.body.storyId;
-  console.log;
 
   function makeDbQuery() {
     return new Promise((resolve, reject) => {
