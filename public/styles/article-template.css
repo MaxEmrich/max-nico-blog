@@ -11,9 +11,16 @@
   align-content: center;
   letter-spacing: 0.05rem;
   line-height: 2rem;
+  flex-wrap: wrap;
 }
 
 #storyTitle {
   display: flex;
   justify-content: center;
+}
+
+pre {
+  display: flex;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
 }
