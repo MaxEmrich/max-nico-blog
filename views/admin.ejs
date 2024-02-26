@@ -3,6 +3,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Admin Page</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="/styles/base.css" rel="stylesheet" type="text/css" />
 <link href="/styles/styles-admin.css" rel="stylesheet" type="text/css" />
 </head>
@@ -31,6 +32,26 @@
             <input id="storyNameInput" type="text" name="storyName" placeholder="add the name of the story">
             <button id="submit-story-btn" type="submit">Add Story</button>
         </form>
+    </div>
+
+    <h3 id="delete-story-header">
+      <pre>
+                              Delete A Story 
+        (this removes the story from the database)
+      </pre>
+    </h3>
+    <div id="show-articles">
+      <ul>
+      <% storyInfo.forEach(function(currentStory) { %>
+        <li>
+          <form action="/admin/remove-article", method="POST">
+          <input type="hidden" name="storyId" value=<%= currentStory.id %>>
+          <%= currentStory.story_name %>
+          <button id="each-story">Delete</button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
     </div>
 
 </body>

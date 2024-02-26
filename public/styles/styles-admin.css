@@ -1,3 +1,7 @@
+body {
+  height: 150vh;
+}
+
 #formdiv {
   display: flex;
   justify-content: center;
@@ -33,4 +37,22 @@
   justify-content: center;
   align-items: center;
   width: 200px;
+}
+
+#show-articles {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#show-articles * {
+  margin-bottom: 2rem;
+}
+
+#delete-story-header {
+  font-weight: 200;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
 }

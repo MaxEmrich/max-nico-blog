@@ -14,64 +14,33 @@ const session = require("express-session");
 // Pre-config -----------------------------------------------------
 const AVAILABLE_EMAIL = config.ACCEPTED_ADMIN_REGISTRATION_EMAIL_1;
 const session_key = config.SESSION_KEY;
-initializePassport(
-  passport,
-  async (email) => {
-    let user_data = null;
-    try {
-      user_data = await new Promise((resolve, reject) => {
-        db.query(
-          "SELECT id, admin_email, admin_password FROM admin_users",
-          (err, result, fields) => {
-            if (err) {
-              console.log(err);
-              reject(err);
-            } else {
-              resolve(result);
-            }
+initializePassport(passport, async (email) => {
+  let user_data = null;
+  try {
+    user_data = await new Promise((resolve, reject) => {
+      db.query(
+        "SELECT id, admin_email, admin_password FROM admin_users",
+        (err, result, fields) => {
+          if (err) {
+            console.log(err);
+            reject(err);
+          } else {
+            resolve(result);
           }
-        );
-      });
-
-      for (user of user_data) {
-        if (user.admin_email == email) {
-          return user; // Return the entire user object
         }
-      }
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
-  } // --------------------------------------------------------------------------->
-  //   async (id) => {
-  //     let user_data = null;
-  //     try {
-  //       user_data = new Promise((resolve, reject) => {
-  //         db.query(
-  //           "SELECT id, admin_email, admin_password FROM admin_users",
-  //           (err, result, fields) => {
-  //             if (err) {
-  //               console.log(err);
-  //               reject(err);
-  //             } else {
-  //               resolve(result);
-  //             }
-  //           }
-  //         );
-  //       });
+      );
+    });
 
-  //       for (user of user_data) {
-  //         if (user.id == id) {
-  //           return user; // Return the entire user object
-  //         }
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //       return null;
-  //     }
-  //     return 0;
-  //   }
-);
+    for (user of user_data) {
+      if (user.admin_email == email) {
+        return user; // Return the entire user object
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+});
 
 router.use(
   session({
@@ -82,10 +51,32 @@ router.use(
 );
 router.use(passport.initialize());
 router.use(passport.session());
-// --------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------
 
 router.get("/", checkAuthenticated, (req, res) => {
-  res.render("admin");
+  const resultFromQuery = async () => {
+    let return_value = await new Promise((resolve, reject) => {
+      db.query("SELECT story_name, id FROM stories", (err, result) => {
+        if (err) {
+          console.log(err);
+          reject(err);
+        } else if (result) {
+          resolve(result);
+        }
+      });
+    });
+    return return_value;
+  };
+
+  resultFromQuery()
+    .then((result) => {
+      res.render("admin", { storyInfo: result });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.render("index");
+    });
 });
 
 router.get("/goto-admin-register", (req, res) => {
@@ -94,6 +85,32 @@ router.get("/goto-admin-register", (req, res) => {
 
 router.get("/goto-admin-login", (req, res) => {
   res.render("login-admin");
+});
+
+router.post("/remove-article", checkAuthenticated, (req, res) => {
+  const storyId = req.body.storyId;
+  console.log;
+
+  function makeDbQuery() {
+    return new Promise((resolve, reject) => {
+      db.query("DELETE FROM stories WHERE id = ?", [storyId], (err, result) => {
+        if (err) {
+          console.log(err);
+          reject(err);
+        } else if (result) {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+  async function renderResults() {
+    const resultsFromQuery = await makeDbQuery();
+    console.log(resultsFromQuery);
+    res.redirect("back");
+  }
+
+  renderResults();
 });
 
 // Admin LOGIN & REGISTER routes ----------------------------------------->
@@ -128,8 +145,6 @@ router.post("/admin-register", async (req, res) => {
       if (err) {
         console.log(err);
         res.redirect("/");
-      } else if (result) {
-        console.log(result);
       }
       res.render("login-admin");
     });
@@ -146,7 +161,7 @@ function checkAuthenticated(req, res, next) {
     return next();
   }
   console.log("attempted to go to admin page without being logged in");
-  res.render("index");
+  res.render("../index");
 }
 
 module.exports = router;

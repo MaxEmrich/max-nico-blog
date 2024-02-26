@@ -108,7 +108,7 @@ router.post("/add-story", (req, res) => {
       console.log(result);
     }
   });
-  res.redirect("/");
+  res.redirect("back");
 });
 
 module.exports = router;
