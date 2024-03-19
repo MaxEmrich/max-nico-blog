@@ -1,5 +1,5 @@
 * {
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
 }
 
@@ -8,8 +8,6 @@ html {
   display: flex;
   justify-items: center;
   justify-content: center;
-  /* width: calc(100vw - 16px);
-    height: calc(100vh - 16px); */
 }
 
 body {
@@ -35,7 +33,7 @@ p {
   padding: 0; /* Remove default padding */
   margin-left: -15px;
   margin-right: -15px;
-  margin-top: -15px;
+  margin-top: -25px;
   align-items: center;
 }
 

@@ -19,7 +19,7 @@ main {
 } */
 
 #home-hero {
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   background: linear-gradient(0deg, white, #e5e5e5 95%) no-repeat;
 
@@ -43,7 +43,7 @@ main {
 
 .paragraph-text p {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 4rem;
 }
 
