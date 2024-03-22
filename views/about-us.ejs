@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tales From 616</title>
-    <link href="/styles/home-styles.css" rel="stylesheet" type="text/css" />
-    <link href="/styles/register-page.css" rel="stylesheet" type="text/css" />
+    <link href="/styles/base.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,28 +13,15 @@
       rel="stylesheet"
     />
     " />
-    <!-- Always use ../ to access the upper level directory -->
   </head>
   <body>
     <!------------------------------------------------------------------------->
     <!--Navbar-->
+
     <%- include("navbar.ejs") %>
 
     <!------------------------------------------------------------------------->
 
-    <h1>Login Page</h1>
-    <div id="registration-form-div">
-      <form id="registration-form" action="/admin/admin-login" method="POST">
-        <div>
-          <label for="email">Email</label>
-          <input type="text" id="email" name="email" required />
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <h1>About Us Page</h1>
   </body>
 </html>

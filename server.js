@@ -12,6 +12,7 @@ const methodOverride = require("method-override");
 const storiesRoute = require("./routes/stories-routes");
 const adminRoute = require("./routes/admin-routes");
 const authRoute = require("./routes/auth-routes");
+const aboutUsRoute = require("./routes/about-us-routes");
 const db = require("./models/models");
 
 // ---------------------------------------------------------
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/auth", authRoute);
 app.use("/stories-routes", storiesRoute);
 app.use("/admin", adminRoute);
+app.use("/about-us", aboutUsRoute);
 app.use(
   express.static(publicPath, {
     setHeaders: (res, path) => {
