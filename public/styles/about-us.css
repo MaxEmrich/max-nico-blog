@@ -1,40 +1,57 @@
+* {
+  color: black;
+}
+
 body {
   background: linear-gradient(0deg, white, #e5e5e5 95%) no-repeat;
   height: 100vh;
 }
 
-#about-us-header {
+main {
   display: flex;
-  font-size: 4rem;
-  font-weight: 300;
-  letter-spacing: 0.35rem;
-  width: 100vw;
   justify-content: center;
 }
 
-#images-container {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
-#img-1-container {
+#about-us-header {
+  height: 40vh;
   display: flex;
   justify-content: left;
+  align-items: center;
+}
+
+#about-us-header h1 {
+  font-size: 4rem;
+  margin-left: 4rem;
+  letter-spacing: 0.35rem;
+}
+
+#main-container {
+  display: flex;
+  justify-content: space-around;
   width: 80vw;
-  flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
-#img-1-container #img-1-footer {
-  flex-wrap: wrap;
-}
-
-#img-1-container img {
+#img-1 {
   margin-top: 2rem;
-  max-width: 70%;
-  max-height: 50%;
-  height: auto;
-  width: auto;
+  margin-left: 5rem;
+  margin-right: 10rem;
+  max-width: 30%;
+  max-height: 30%;
 
-  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 15px;
+}
+
+#about-us-explainer {
+  margin-right: 5rem;
+  width: 40%;
+}
+
+#explainer-text {
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-variant: normal;
 }
