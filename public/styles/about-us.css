@@ -1,0 +1,40 @@
+body {
+  background: linear-gradient(0deg, white, #e5e5e5 95%) no-repeat;
+  height: 100vh;
+}
+
+#about-us-header {
+  display: flex;
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 0.35rem;
+  width: 100vw;
+  justify-content: center;
+}
+
+#images-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#img-1-container {
+  display: flex;
+  justify-content: left;
+  width: 80vw;
+  flex-wrap: wrap;
+}
+
+#img-1-container #img-1-footer {
+  flex-wrap: wrap;
+}
+
+#img-1-container img {
+  margin-top: 2rem;
+  max-width: 70%;
+  max-height: 50%;
+  height: auto;
+  width: auto;
+
+  border-radius: 10px;
+}
