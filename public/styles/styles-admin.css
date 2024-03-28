@@ -48,6 +48,19 @@ body {
 
 #show-articles * {
   margin-bottom: 2rem;
+  display: flex;
+}
+
+#show-articles ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: 5rem;
+  justify-content: center;
+}
+
+#show-articles ul button {
+  margin-left: 1rem;
+  height: auto;
 }
 
 #delete-story-header {

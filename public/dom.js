@@ -26,3 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+function deleteConfirmation() {
+  if (confirm("Do you want to delete this story?")) {
+  }
+}
