@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function deleteConfirmation() {
-  if (confirm("Do you want to delete this story?")) {
-  }
+function renderEditingTemplate() {
+  // make a copy of the words
+
+  return 0;
 }

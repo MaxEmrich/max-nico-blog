@@ -61,7 +61,8 @@
           <%= currentStory.story_name %>
           <button id="delete-story-btn" onclick="deleteConfirmation(this.form)">Delete</button>
           </form>
-          <form action="/admin/edit-article" method="GET">
+          <form action="/admin/edit-article" method="POST">
+            <input type="hidden" name="storyId" value=<%= currentStory.id %>>
             <button>Edit Story</button>
           </form>
         </li> 

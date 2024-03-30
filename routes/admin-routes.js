@@ -109,6 +109,30 @@ router.post("/remove-article", checkAuthenticated, (req, res) => {
   renderResults();
 });
 
+router.post("/edit-article", (req, res) => {
+  function dbQuery() {
+    return new Promise((resolve, reject) => {
+      db.query("SELECT story_data, story_name FROM stories", (err, result) => {
+        if (err) {
+          console.log(err);
+          reject(err);
+        } else if (result) {
+          resolve(result);
+        }
+      });
+    });
+  }
+  let finalResult = null;
+  dbQuery()
+    .then((theResult) => {
+      finalResult = theResult;
+      res.render("editing-template", { textContent: finalResult });
+    })
+    .catch((err) => {
+      res.send(`error ${err}`);
+    });
+});
+
 // Admin LOGIN & REGISTER routes ----------------------------------------->
 
 router.post(
