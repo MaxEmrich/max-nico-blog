@@ -1,0 +1,20 @@
+main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+main form {
+  margin-top: 1rem;
+  margin-left: 5rem;
+  justify-content: center;
+}
+
+main form button {
+  width: 10rem;
+}
+
+#input-field {
+  width: 90vw;
+  height: 100vh;
+}

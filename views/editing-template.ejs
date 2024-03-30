@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tales From 616</title>
+    <link
+      href="/styles/editing-template.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/styles/base.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <title>Editing Template</title>
   </head>
   <body>
+    <%- include("navbar.ejs") %>
     <script type="text/javascript" src="/dom.js"></script>
-    <%- include("navbar.ejs") %> Extra Text Here
+    <main>
+      <form
+        onsubmit="return formConfirmation(this.form, 'Confirm this edit?')"
+        method="POST"
+        action="submit-article-edit"
+      >
+        <button>Confirm Edit</button>
+        <textarea name="textInput" id="input-field">
+        <%=storyData.story_data%>
+        </textarea>
+        <input type="hidden" name="storyId" value="<%=storyId %>" />
+      </form>
+    </main>
   </body>
 </html>

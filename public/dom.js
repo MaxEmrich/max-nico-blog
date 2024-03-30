@@ -27,8 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function renderEditingTemplate() {
-  // make a copy of the words
-
-  return 0;
+function formConfirmation(form, display_text) {
+  if (confirm(display_text)) {
+    form.submit();
+  } else {
+    return false;
+  }
 }

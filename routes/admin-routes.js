@@ -110,27 +110,56 @@ router.post("/remove-article", checkAuthenticated, (req, res) => {
 });
 
 router.post("/edit-article", (req, res) => {
+  const storyId = req.body.storyId;
   function dbQuery() {
     return new Promise((resolve, reject) => {
-      db.query("SELECT story_data, story_name FROM stories", (err, result) => {
-        if (err) {
-          console.log(err);
-          reject(err);
-        } else if (result) {
-          resolve(result);
+      db.query(
+        "SELECT story_data FROM stories WHERE id = ?",
+        [storyId],
+        (err, result) => {
+          if (err) {
+            console.log(err);
+            reject(err);
+          } else if (result) {
+            resolve(result);
+          }
         }
-      });
+      );
     });
   }
-  let finalResult = null;
   dbQuery()
-    .then((theResult) => {
-      finalResult = theResult;
-      res.render("editing-template", { textContent: finalResult });
+    .then((result) => {
+      console.log(result);
+      res.render("editing-template", {
+        storyData: result[0],
+        storyId: storyId,
+      });
     })
     .catch((err) => {
       res.send(`error ${err}`);
     });
+});
+
+router.post("/submit-article-edit", (req, res) => {
+  const storyData = req.body.textInput;
+  const storyId = req.body.storyId;
+  console.log(typeof storyData);
+  console.log(storyData);
+  console.log(storyId);
+
+  db.query(
+    "UPDATE stories SET story_data = ? WHERE id = ?",
+    [storyData, storyId],
+    (err, result) => {
+      if (err) {
+        console.log("ERROR! Could not update record... \n\n ->" + err);
+        return err;
+      } else if (result) {
+        console.log(`Success! -> \n ${result.affectedRows}`);
+        res.render("../index");
+      }
+    }
+  );
 });
 
 // Admin LOGIN & REGISTER routes ----------------------------------------->

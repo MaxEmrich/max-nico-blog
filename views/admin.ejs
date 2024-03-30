@@ -23,18 +23,7 @@
     <%- include("navbar.ejs") %>
   
     <!------------------------------------------------------------------------->
-    <script type="text/javascript">
-      function deleteConfirmation(form) {
-        if (confirm("Do you want to delete this story?")) 
-          {
-            form.submit();
-          }
-        else 
-          {
-            return false;
-          }
-      }
-    </script>
+     <script type="text/javascript" src="/dom.js"></script>
     <div id="formdiv">
         <form action="/stories-routes/add-story" method="POST">
           <label for="textArea">Text Content</label>
@@ -56,10 +45,15 @@
       <ul>
       <% storyInfo.forEach(function(currentStory) { %>
         <li>
-          <form action="/admin/remove-article", method="POST">
+          <form 
+          onsubmit="return formConfirmation(this.form, 'Are you sure you want to delete this story?')" 
+          action="/admin/remove-article" 
+          method="POST"
+          >
+          <!--------------------------------------------------------->
           <input type="hidden" name="storyId" value=<%= currentStory.id %>>
           <%= currentStory.story_name %>
-          <button id="delete-story-btn" onclick="deleteConfirmation(this.form)">Delete</button>
+          <button id="delete-story-btn">Delete</button>
           </form>
           <form action="/admin/edit-article" method="POST">
             <input type="hidden" name="storyId" value=<%= currentStory.id %>>
