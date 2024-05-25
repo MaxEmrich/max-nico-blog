@@ -114,7 +114,7 @@ router.post("/edit-article", (req, res) => {
   function dbQuery() {
     return new Promise((resolve, reject) => {
       db.query(
-        "SELECT story_data FROM stories WHERE id = ?",
+        "SELECT story_data, story_name FROM stories WHERE id = ?",
         [storyId],
         (err, result) => {
           if (err) {
@@ -133,6 +133,7 @@ router.post("/edit-article", (req, res) => {
       res.render("editing-template", {
         storyData: result[0],
         storyId: storyId,
+        storyName: result[0].story_name,
       });
     })
     .catch((err) => {
@@ -143,13 +144,15 @@ router.post("/edit-article", (req, res) => {
 router.post("/submit-article-edit", (req, res) => {
   const storyData = req.body.textInput;
   const storyId = req.body.storyId;
+  const storyName = req.body.storyNameInput;
   console.log(typeof storyData);
   console.log(storyData);
   console.log(storyId);
+  console.log(storyName);
 
   db.query(
-    "UPDATE stories SET story_data = ? WHERE id = ?",
-    [storyData, storyId],
+    "UPDATE stories SET story_data = ?, story_name = ? WHERE id = ?",
+    [storyData, storyName, storyId],
     (err, result) => {
       if (err) {
         console.log("ERROR! Could not update record... \n\n ->" + err);

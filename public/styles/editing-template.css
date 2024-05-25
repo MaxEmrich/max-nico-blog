@@ -18,3 +18,7 @@ main form button {
   width: 90vw;
   height: 100vh;
 }
+
+#story-name-field {
+  width: 70vw;
+}
